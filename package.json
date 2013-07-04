@@ -1,0 +1,31 @@
+{
+  "name": "gitteh-tree-entry",
+  "version": "0.0.0",
+  "description": "resolve tree entry by path in a repo",
+  "main": "index.js",
+  "dependencies": {
+    "gitteh-promisified": "~0.1.0",
+    "kew": "~0.1.7"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "mocha": "~1.9.0",
+    "semver": "~1.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreypopp/gitteh-tree-entry.git"
+  },
+  "homepage": "https://github.com/andreypopp/gitteh-tree-entry",
+  "keywords": [
+    "git",
+    "gitteh",
+    "tree"
+  ],
+  "author": {
+    "name": "Andrey Popp",
+    "email": "8mayday@gmail.com",
+    "url": "http://andreypopp.com"
+  },
+  "license": "MIT"
+}
