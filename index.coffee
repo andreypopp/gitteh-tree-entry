@@ -2,7 +2,12 @@ git = require 'gitteh-promisified'
 {resolve} = require 'kew'
 
 treeEntry = (tree, path) ->
-  path = path.split('/').filter(Boolean) unless Array.isArray(path)
+  unless Array.isArray(path)
+    path = path.split('/')
+      .map((v) -> if v == '.' then '' else v)
+      .filter(Boolean)
+
+  return tree if path.length == 0
 
   for entry in tree.entries when entry.name == path[0]
     if path.length == 1
@@ -18,7 +23,10 @@ treeEntry = (tree, path) ->
 
   resolve(undefined)
 
+commitTreeEntry = (commit, path) ->
+  commit.tree().then (tree) -> treeEntry(tree, path)
+
 refTreeEntry = (ref, path) ->
-  ref.tree().then (tree) -> treeEntry(tree, path)
+  ref.repository.commit
 
 module.exports = {treeEntry, refTreeEntry}
