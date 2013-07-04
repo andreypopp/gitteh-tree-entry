@@ -1,6 +1,6 @@
 {
   "name": "gitteh-tree-entry",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "resolve tree entry by path in a repo",
   "main": "index.js",
   "dependencies": {
