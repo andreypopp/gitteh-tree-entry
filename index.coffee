@@ -27,6 +27,7 @@ commitTreeEntry = (commit, path) ->
   commit.tree().then (tree) -> treeEntry(tree, path)
 
 refTreeEntry = (ref, path) ->
-  ref.repository.commit
+  ref.repository.commit(ref.target)
+    .then(commit) -> commitTreeEntry(commit, path)
 
-module.exports = {treeEntry, refTreeEntry}
+module.exports = {treeEntry, refTreeEntry, commitTreeEntry}

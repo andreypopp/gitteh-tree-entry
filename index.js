@@ -46,10 +46,13 @@ commitTreeEntry = function(commit, path) {
 };
 
 refTreeEntry = function(ref, path) {
-  return ref.repository.commit;
+  return ref.repository.commit(ref.target).then(commit)(function() {
+    return commitTreeEntry(commit, path);
+  });
 };
 
 module.exports = {
   treeEntry: treeEntry,
-  refTreeEntry: refTreeEntry
+  refTreeEntry: refTreeEntry,
+  commitTreeEntry: commitTreeEntry
 };
