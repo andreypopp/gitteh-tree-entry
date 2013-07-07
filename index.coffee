@@ -15,11 +15,13 @@ treeEntry = (tree, path) ->
         return resolve(entry)
 
       else if entry.type == 'tree'
-        tree.repository.tree(entry.id)
+        return tree.repository.tree(entry.id).then (tree) ->
+          tree.name = entry.name
+          tree
 
     else if path.length > 1 and entry.type == 'tree'
-      return tree.repository.tree(entry.id)
-        .then (tree) -> treeEntry(tree, path.slice(1))
+      return tree.repository.tree(entry.id).then (tree) ->
+        treeEntry(tree, path.slice(1))
 
   resolve(undefined)
 

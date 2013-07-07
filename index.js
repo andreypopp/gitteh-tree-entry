@@ -27,7 +27,10 @@ treeEntry = function(tree, path) {
         if (entry.type === 'blob') {
           return resolve(entry);
         } else if (entry.type === 'tree') {
-          tree.repository.tree(entry.id);
+          return tree.repository.tree(entry.id).then(function(tree) {
+            tree.name = entry.name;
+            return tree;
+          });
         }
       } else if (path.length > 1 && entry.type === 'tree') {
         return tree.repository.tree(entry.id).then(function(tree) {
