@@ -1,11 +1,11 @@
 {ok, equal} = require 'assert'
 path = require 'path'
 git = require 'gitteh-promisified'
-{treeEntry} = require './index'
+{treeEntry} = require '../index'
 
 describe 'gitteh-tree-entry', ->
 
-  tree = git.openRepository(path.join(__dirname, '.git'))
+  tree = git.openRepository(path.join(__dirname, '..', '.git'))
     .then (repo) ->
       repo.commit('34ee62d4b862d28a3681550275cc77675989daf7')
     .then (commit) ->
