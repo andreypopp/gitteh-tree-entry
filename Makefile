@@ -17,7 +17,7 @@ install link:
 	@npm $@
 
 test:
-	@$(BIN)/mocha -b -R spec --compilers coffee:coffee-script ./spec.coffee
+	@$(BIN)/mocha -b -R spec --compilers coffee:coffee-script ./specs/*.coffee
 
 docs::
 	@sphinx-npm \
